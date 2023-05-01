@@ -7,7 +7,6 @@ from typing import (
     NewType,
     Optional,
     Union,
-    Tuple,
 )
 
 _UARTParity = NewType("_UARTParity", int)
@@ -26,6 +25,312 @@ def sleep(time: int) -> None:
     Put micro:bit to sleep for some milliseconds (1 second = 1000 ms) of time.
     sleep(2000) gives micro:bit a 2 second nap.
     """
+    pass
+
+
+def running_time() -> int:
+    """
+    Return running_time() in milliseconds since micro:bit's last reset.
+    """
+    pass
+
+
+def temperature() -> float:
+    """
+    Return micro:bit's temperature in degrees Celcius.
+    """
+    pass
+
+
+# Accelerometer 3D orientation
+class _Accelerometer(object):
+    def get_x(self) -> int:
+        """
+        Return micro:bit's tilt (X acceleration) in milli-g's.
+        """
+        pass
+
+    def get_y(self) -> int:
+        """
+        Return micro:bit's tilt (Y acceleration) in milli-g's.
+        """
+        pass
+
+    def get_z(self) -> int:
+        """
+        Return micro:bit's up-down motion (Z acceleration) in milli-g's.
+        Z is a positive number when moving up. Moving down, Z is a negative
+        number.
+        """
+        pass
+
+    def is_gesture(self, name: str) -> bool:
+        """
+        Return True or False to indicate if the named gesture is currently
+        active.
+        MicroPython understands the following gestures: 'up', 'down', 'left',
+        'right', 'face up', 'face down', 'freefall', '3g', '6g', '8g' and
+        'shake'.
+        """
+        pass
+
+    def was_gesture(self, name: str) -> bool:
+        """
+        Return True or False to indicate if the named gesture was active since
+        the last call.
+        MicroPython understands the following gestures: 'up', 'down', 'left',
+        'right', 'face up', 'face down', 'freefall', '3g', '6g', '8g' and
+        'shake'.
+        """
+        pass
+
+    def get_gestures(self) -> List[str]:
+        """
+        Return a list indicating the gesture history. The most recent gesture
+        is last.
+        Calling this method also clears the gesture history.
+        MicroPython understands the following gestures: 'up', 'down', 'left',
+        'right', 'face up', 'face down', 'freefall', '3g', '6g', '8g' and
+        'shake'.
+        """
+        pass
+
+
+accelerometer = _Accelerometer()
+
+
+# Pushbutton
+class _Button(object):
+    def is_pressed(self) -> bool:
+        """
+        If the button is pressed down, is_pressed() is True, else False.
+        """
+        pass
+
+    def was_pressed(self) -> bool:
+        """
+        Use was_pressed() to learn if the button was pressed since the last
+        time was_pressed() was called. Returns True or False.
+        """
+        pass
+
+    def get_presses(self) -> int:
+        """
+        Use get_presses() to get the running total of button presses, and also
+        reset this counter to zero.
+        """
+        pass
+
+
+button_a = _Button()
+button_b = _Button()
+
+
+# Compass 3D direction heading
+class _Compass(object):
+    def is_calibrated(self) -> bool:
+        """
+        If micro:bit's compass is_calibrated() and adjusted for accuracy,
+        return True.
+        If compass hasn't been adjusted for accuracy, return False.
+        """
+        pass
+
+    def calibrate(self) -> None:
+        """
+        If micro:bit is confused, calibrate() the compass to adjust the its
+        accuracy.
+        Will ask you to rotate the device to draw a circle on the display.
+        Afterwards, micro:bit will know which way is north.
+        """
+        pass
+
+    def clear_calibration(self) -> None:
+        """
+        Reset micro:bit's compass using clear_calibration() command.
+        Run calibrate() to improve accuracy.
+        """
+        pass
+
+    def get_x(self) -> int:
+        """
+        Return magnetic field detected along micro:bit's X axis.
+        Usually, the compass returns the earth's magnetic field in micro-Tesla
+        units.
+        Unless...a strong magnet is nearby!
+        """
+        pass
+
+    def get_y(self) -> int:
+        """
+        Return magnetic field detected along micro:bit's Y axis.
+        Usually, the compass returns the earth's magnetic field in micro-Tesla
+        units.
+        Unless...a strong magnet is nearby!
+        """
+        pass
+
+    def get_z(self) -> int:
+        """
+        Return magnetic field detected along micro:bit's Z axis.
+        Usually, the compass returns the earth's magnetic field in micro-Tesla
+        units.
+        Unless...a strong magnet is nearby!
+        """
+        pass
+
+    def get_field_strength(self) -> int:
+        """
+        Return strength of magnetic field around micro:bit.
+        """
+        pass
+
+    def heading(self) -> int:
+        """
+        Return a number between 0-360 indicating the device's heading. 0 is
+        north.
+        """
+        pass
+
+
+compass = _Compass()
+
+
+# Display 5x5 LED grid
+class _Display(object):
+    def show(
+        self,
+        x: Union['Image', List['Image'], str],
+        delay: int = 400,
+        wait: bool = True,
+        loop: bool = False,
+        clear: bool = False,
+    ) -> None:
+        """
+        Use show(x) to print the string or image 'x' to the display. If 'x' is
+        a list of images they will be animated together.
+        Use 'delay' to specify the speed of frame changes in milliseconds.
+        If wait is False animation will happen in the background while the
+        program continues.
+        If loop is True the animation will repeat forever.
+        If clear is True the display will clear at the end of the animation.
+        """
+        pass
+
+    def scroll(
+        self,
+        string: str,
+        delay: int = 150,
+        wait: bool = True,
+        loop: bool = False,
+        monospace: bool = False,
+    ) -> None:
+        """
+        Use scroll(string) to scroll the string across the display.
+        Use delay to control how fast the text scrolls.
+        If wait is False the text will scroll in the background while the
+        program continues.
+        If loop is True the text will repeat forever.
+        If monospace is True the characters will always take up 5
+        pixel-columns.
+        """
+        pass
+
+    def clear(self) -> None:
+        """
+        Use clear() to clear micro:bit's display.
+        """
+        pass
+
+    def get_pixel(self, x: int, y: int) -> int:
+        """
+        Use get_pixel(x, y) to return the display's brightness at LED pixel
+        (x,y).
+        Brightness can be from 0 (LED is off) to 9 (maximum LED brightness).
+        """
+        pass
+
+    def set_pixel(self, x: int, y: int, b: int) -> None:
+        """
+        Use set_pixel(x, y, b) to set the display at LED pixel (x,y) to
+        brightness 'b'
+        which can be set between 0 (off) to 9 (full brightness).
+        """
+        pass
+
+    def on(self) -> None:
+        """
+        Use on() to turn on the display.
+        """
+        pass
+
+    def off(self) -> None:
+        """
+        Use off() to turn off the display.
+        """
+        pass
+
+    def is_on(self) -> bool:
+        """
+        Use is_on() to query if the micro:bit's display is on (True) or off
+        (False).
+        """
+        pass
+
+
+display = _Display()
+
+
+# Pins
+class _Pin(object):
+    """
+    A standard pin
+    """
+    def read_digital(self) -> int:
+        """
+        Read the digital value of the pin. 0 for low, 1 for high
+        """
+        pass
+
+    def write_digital(self, value: int) -> None:
+        """
+        Set the pin to output high if value is 1, or to low, it it is 0.
+        """
+        pass
+
+
+class _AnaloguePin(_Pin):
+    """
+    These pins have ADC & PWM support
+    """
+    def read_analog(self) -> int:
+        """
+        Read the voltage applied to the pin.
+        Returns the reading as a number between 0 (meaning 0v) and 1023
+        (meaning 3.3v).
+        """
+        pass
+
+    def write_analog(self, value: int) -> None:
+        """
+        Set the pin to output a value between 0 and 1023.
+        """
+        pass
+
+    def set_analog_period(self, period: int) -> None:
+        """
+        Set the period of the PWM signal output to period milliseconds.
+        """
+        pass
+
+    def set_analog_period_microseconds(self, period: int) -> None:
+        """
+        Set the period of the PWM signal output to period microseconds.
+        """
+        pass
+
+
+class _GiantPin(_AnaloguePin):
     """
     These pins are aranged on the bottom of the board and have holes through
     them
@@ -60,10 +365,10 @@ pin19 = _Pin()
 pin20 = _Pin()
 # pin21 = gnd
 # pin22 = gnd
+
 # V2
 pin_logo = _GiantPin()
 pin_speaker = _AnaloguePin()
-
 
 # I2C
 class _I2C(object):
