@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from microbit import (
-    _AnaloguePin,
+    _MicroBitAnalogDigitalPin,
     pin0,
 )
 
@@ -70,7 +70,7 @@ def say(
     speed: int = 72,
     mouth: int = 128,
     throat: int = 128,
-    pin: _AnaloguePin = pin0,
+    pin: _MicroBitAnalogDigitalPin = pin0,
 ) -> None:
     """
     Say the English words in the string 'words'.
@@ -89,7 +89,7 @@ def pronounce(
     speed: int = 72,
     mouth: int = 128,
     throat: int = 128,
-    pin: _AnaloguePin = pin0,
+    pin: _MicroBitAnalogDigitalPin = pin0,
 ) -> None:
     """
     Pronounce the phonemes in the string 'phonemes'.
@@ -108,7 +108,7 @@ def sing(
     speed: int = 72,
     mouth: int = 128,
     throat: int = 128,
-    pin: _AnaloguePin = pin0,
+    pin: _MicroBitAnalogDigitalPin = pin0,
 ) -> None:
     """
     Sing the phonemes in the string 'song'.

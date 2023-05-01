@@ -282,93 +282,97 @@ display = _Display()
 
 
 # Pins
-class _Pin(object):
-    """
-    A standard pin
-    """
+class _MicroBitDigitalPin:
+    """Digital pin on the Micro:Bit board"""
+
     def read_digital(self) -> int:
         """
         Read the digital value of the pin. 0 for low, 1 for high
         """
         pass
 
-    def write_digital(self, value: int) -> None:
+    def write_digital(self,value: int) -> None:
         """
         Set the pin to output high if value is 1, or to low, it it is 0.
         """
         pass
 
+    def __init__(self):
+        pass
 
-class _AnaloguePin(_Pin):
-    """
-    These pins have ADC & PWM support
-    """
+class _MicroBitAnalogDigitalPin(_MicroBitDigitalPin):
+    """Analog (PWM) pin on the Micro:Bit board"""
+
     def read_analog(self) -> int:
-        """
-        Read the voltage applied to the pin.
-        Returns the reading as a number between 0 (meaning 0v) and 1023
-        (meaning 3.3v).
-        """
+        """Reads the voltage applied to the pin, and return it as an integer between 0 (0V), and 1024 (3.3V)"""
+        pass
+    
+    def write_analog(self,value: int) -> None:
+        """Output a PWM signal on the pin, with a duty cycle proportional to provided value, where 0 = 0%, and 1023 = 100%"""
+        pass
+    
+    
+    def set_analog_period(self,period: int) -> None:
+        """Set the period of the PWM signal being output to period in ms. Minimum valid is 1ms"""
+        pass
+    
+    
+    def set_analog_period_microseconds(self,period: int) -> None:
+        """Set the period of the PWM signal being output to period in microseconds. Minimum valid is 256"""
+        pass
+    
+    def __init__(self):
         pass
 
-    def write_analog(self, value: int) -> None:
-        """
-        Set the pin to output a value between 0 and 1023.
-        """
-        pass
+class _MicroBitTouchPin(_MicroBitAnalogDigitalPin):
+    """Touch sensitive pin on the Micro:Bit board"""
 
-    def set_analog_period(self, period: int) -> None:
-        """
-        Set the period of the PWM signal output to period milliseconds.
-        """
-        pass
-
-    def set_analog_period_microseconds(self, period: int) -> None:
-        """
-        Set the period of the PWM signal output to period microseconds.
-        """
-        pass
-
-
-class _GiantPin(_AnaloguePin):
-    """
-    These pins are aranged on the bottom of the board and have holes through
-    them
-    """
     def is_touched(self) -> bool:
-        """
-        Returns if the pin is being physically touched on the hardware
-        """
+        """Return True if the pin is being touched, otherwise False"""
         pass
 
+    def __init__(self):
+        pass
 
-pin0 = _GiantPin()
-pin1 = _GiantPin()
-pin2 = _GiantPin()
-pin3 = _AnaloguePin()
-pin4 = _AnaloguePin()
-pin5 = _Pin()
-pin6 = _Pin()
-pin7 = _Pin()
-pin8 = _Pin()
-pin9 = _Pin()
-pin10 = _AnaloguePin()
-pin11 = _Pin()
-pin12 = _Pin()
-pin13 = _Pin()
-pin14 = _Pin()
-pin15 = _Pin()
-pin16 = _Pin()
+class _MicroBitAnalogDigitalPinReadOnly:
+    """Read only PWM pin"""
+
+    def read_analog(self) -> int:
+        """Reads the voltage applied to the pin, and return it as an integer between 0 (0V), and 1024 (3.3V)"""
+        pass
+    
+    def __init__(self):
+        pass
+
+pin_logo = _MicroBitTouchPin()
+pin_speaker = _MicroBitAnalogDigitalPin()
+
+pin0 = _MicroBitTouchPin()
+pin1 = _MicroBitTouchPin()
+pin2 = _MicroBitTouchPin()
+
+pin3 = _MicroBitAnalogDigitalPin()
+pin4 = _MicroBitAnalogDigitalPin()
+pin5 = _MicroBitDigitalPin()
+pin6 = _MicroBitDigitalPin()
+pin7 = _MicroBitDigitalPin()
+pin8 = _MicroBitDigitalPin()
+pin9 = _MicroBitDigitalPin()
+
+pin10 = _MicroBitAnalogDigitalPin()
+
+pin11 = _MicroBitDigitalPin()
+pin12 = _MicroBitAnalogDigitalPin()
+pin13 = _MicroBitDigitalPin()
+pin14 = _MicroBitDigitalPin()
+pin15 = _MicroBitDigitalPin()
+pin16 = _MicroBitDigitalPin()
 # Pin17 = 3v3
 # Pin18 = 3v3
-pin19 = _Pin()
-pin20 = _Pin()
+pin19 = _MicroBitDigitalPin()
+pin20 = _MicroBitDigitalPin()
 # pin21 = gnd
 # pin22 = gnd
-
-# V2
-pin_logo = _GiantPin()
-pin_speaker = _AnaloguePin()
 
 # I2C
 class _I2C(object):

@@ -8,7 +8,7 @@ from typing import (
 )
 
 from microbit import (
-    _AnaloguePin,
+    _MicroBitAnalogDigitalPin,
     pin0,
 )
 
@@ -27,7 +27,7 @@ def set_tempo(number: int, bpm: int) -> None:
 def pitch(
     freq: int,
     length: int = -1,
-    pin: _AnaloguePin = pin0,
+    pin: _MicroBitAnalogDigitalPin = pin0,
     wait: bool = True,
 ) -> None:
     """
@@ -44,7 +44,7 @@ def pitch(
 
 def play(
     music: Union[_Music, _MusicalNote],
-    pin: _AnaloguePin = pin0,
+    pin: _MicroBitAnalogDigitalPin = pin0,
     wait: bool = True,
     loop: bool = False,
 ) -> None:
@@ -67,7 +67,7 @@ def get_tempo() -> Tuple[int, int]:
     pass
 
 
-def stop(pin: _AnaloguePin = pin0) -> None:
+def stop(pin: _MicroBitAnalogDigitalPin = pin0) -> None:
     """
     Stops all music playback on the given pin.
     If no pin is given, pin0 is assumed.

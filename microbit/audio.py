@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from typing import Iterable, Tuple
 
 from microbit import (
-    _AnaloguePin,
+    _MicroBitAnalogDigitalPin,
     pin0,
     pin1,
 )
@@ -21,7 +21,7 @@ class AudioFrame(list):
 def play(
     source: Iterable[AudioFrame],
     wait: bool = True,
-    pins: Tuple[_AnaloguePin, _AnaloguePin] = (pin0, pin1)
+    pins: Tuple[_MicroBitAnalogDigitalPin, _MicroBitAnalogDigitalPin] = (pin0, pin1)
 ) -> None:
     """
     Play the source to completion where 'source' is an iterable, each element

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-from microbit import _Pin
+from microbit import _MicroBitDigitalPin
 
 
 class NeoPixel(list):
-    def __init__(self, pin: _Pin, n: int) -> None:
+    def __init__(self, pin: _MicroBitDigitalPin, n: int) -> None:
         """
         Create a list representing a strip of 'n' neopixels controlled from
         the specified pin (e.g. microbit.pin0).
