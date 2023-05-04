@@ -28,7 +28,7 @@ the play() function:
 
 #Functions
 
-class Audio():
+class audio():
 
     def __init__(self) -> None:
         pass
