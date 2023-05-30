@@ -6,30 +6,13 @@
 ---
 
 ## About this package
-micro:bit stubs as a python package based on official [micro:bit documentation](https://microbit-micropython.readthedocs.io/en/v2-docs/).
+micro:bit stubs as a python module based on official [micro:bit documentation](https://microbit-micropython.readthedocs.io/en/v2-docs/).
 
 ---
 
 ## Usage
-Copy the microbit package into your working directory. Use the import<br>
+Copy the microbit module into your working directory. Use the import<br>
 function to make it accessible in your code (e.g. `from microbit import *`)
-
----
-
-Note:<br>
-If you want to use the modules audio, neopixel, radio, speech, you<br>
-need to move them from the microbit folder into the same directory<br>
-as the microbit folder. Your working directory in VS Code should<br>
-look like this:
-
-![](img/VSCode-WorkingDirectoryExample.png)
-
-In your code import the modules seperately, e.g:
-
-```python
-from microbit import *
-import speech
-```
 
 ---
 
