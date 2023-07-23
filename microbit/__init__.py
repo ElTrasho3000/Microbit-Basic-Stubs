@@ -1,15 +1,22 @@
+# Basics
 import accelerometer
-import audio
 import compass
 import display
 import i2c
 import microphone
-import neopixel
-import radio
+import power
 import speaker
-import speech
 import spi
 import uart
+# Extended
+import audio
+import machine
+import music
+import neopixel
+import os
+import radio
+import random
+import speech
 
 #Functions
 
