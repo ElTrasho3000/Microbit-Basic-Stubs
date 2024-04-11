@@ -1,5 +1,5 @@
 # micro:bit V2 stubs for VS Code
-![GitHub license](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)
+![GitHub license](https://img.shields.io/badge/license-MIT-red.svg)
 ![V1](https://img.shields.io/badge/micro:bit-V1-green)
 ![V2](https://img.shields.io/badge/micro:bit-V2-blue)
 
