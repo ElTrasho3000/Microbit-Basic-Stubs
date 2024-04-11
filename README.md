@@ -17,4 +17,4 @@ function to make it accessible in your code (e.g. `from microbit import *`)
 ---
 
 ## Git Repository
-https://github.com/ElTrasho3000/Microbit-Stubs-Python-Package
+https://github.com/ElTrasho3000/Microbit-Basic-Stubs
