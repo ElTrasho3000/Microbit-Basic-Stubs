@@ -38,15 +38,16 @@ def init(baudrate=1000000, bits=8, mode=0, sclk=pin13, mosi=pin15, miso=pin14):
 
     The sclk, mosi and miso arguments specify the pins to use for each type of signal. """
     pass
-def read(nbytes):
-    """  Read at most nbytes. Returns what was read. """
+def read(nbytes, out=0):
+    """ Read at most nbytes while continuously writing the single byte given by
+    out. Returns what was read."""
     pass
 
 def write(buffer):
     """ Write the buffer of bytes to the bus. """
     pass
 
-def write_readinto(Out, In):
+def write_readinto(out, in):
     """ Write the out buffer to the bus and read any response into the in buffer. 
     The length of the buffers should be the same. The buffers can be the same object. """
     pass
