@@ -8,6 +8,13 @@
 ## About this package
 micro:bit stubs as a python module based on official [micro:bit documentation](https://microbit-micropython.readthedocs.io/en/v2-docs/).
 
+> [!NOTE]
+> This repository is not the implementation of micro:bit libraries, but merely<br>
+> a stubs library for IntelliSense completion and parameter info. It is meant<br>
+> to be used with the [VS Code micro:bit plugin](https://github.com/makinteract/vscode-microbit-micropython) by [MAKinteract](https://makinteract.kaist.ac.kr/).
+
+> [!WARNING]
+> The MAKinteract VS Code plugin is no longer supported (as of June 2025). 
 ---
 
 ## Usage
